@@ -1,14 +1,18 @@
 package chapter3.exercises.ex17
 
+import chapter3.Cons
 import chapter3.List
+import chapter3.foldRight
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.WordSpec
 import utils.SOLUTION_HERE
 
 // tag::init[]
 fun <A, B> map(xs: List<A>, f: (A) -> B): List<B> =
-
-    SOLUTION_HERE()
+    foldRight(
+        xs,
+        List.empty()
+    ) { x, acc -> Cons(f(x), acc) }
 // end::init[]
 
 //TODO: Enable tests by removing `!` prefix

@@ -1,14 +1,18 @@
 package chapter3.exercises.ex19
 
 import chapter3.List
+import chapter3.append
+import chapter3.foldRight
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.WordSpec
 import utils.SOLUTION_HERE
 
 // tag::init[]
-fun <A, B> flatMap(xa: List<A>, f: (A) -> List<B>): List<B> =
-
-    SOLUTION_HERE()
+fun <A, B> flatMap(xs: List<A>, f: (A) -> List<B>): List<B> =
+    foldRight(
+        xs,
+        List.empty()
+    ) { x, acc -> append(f(x), acc) }
 // end::init[]
 
 //TODO: Enable tests by removing `!` prefix

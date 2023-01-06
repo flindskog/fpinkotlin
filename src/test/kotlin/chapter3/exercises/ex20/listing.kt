@@ -1,14 +1,18 @@
 package chapter3.exercises.ex20
 
+import chapter3.Cons
 import chapter3.List
+import chapter3.Nil
+import chapter3.flatMap
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.WordSpec
 import utils.SOLUTION_HERE
 
 // tag::init[]
-fun <A> filter2(xa: List<A>, f: (A) -> Boolean): List<A> =
-
-    SOLUTION_HERE()
+fun <A> filter2(xs: List<A>, f: (A) -> Boolean): List<A> =
+    flatMap(
+       xs
+    ) { a -> if (f(a)) Cons(a, Nil) else Nil }
 // end::init[]
 
 //TODO: Enable tests by removing `!` prefix

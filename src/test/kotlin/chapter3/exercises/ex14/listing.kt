@@ -1,14 +1,19 @@
 package chapter3.exercises.ex14
 
 import chapter3.List
+import chapter3.Nil
+import chapter3.append
+import chapter3.foldRight
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.WordSpec
 import utils.SOLUTION_HERE
 
 // tag::init[]
-fun <A> concat(lla: List<List<A>>): List<A> =
-
-    SOLUTION_HERE()
+fun <A> concat(xxs: List<List<A>>): List<A> =
+    foldRight(
+        xxs,
+        List.empty()
+    ) { xs, acc -> append(xs, acc) }
 
 fun <A> concat2(lla: List<List<A>>): List<A> =
 
