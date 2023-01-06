@@ -1,5 +1,6 @@
 package chapter3.exercises.ex1
 
+import chapter3.Cons
 import chapter3.List
 import chapter3.Nil
 import io.kotlintest.shouldBe
@@ -9,8 +10,10 @@ import utils.SOLUTION_HERE
 
 // tag::init[]
 fun <A> tail(xs: List<A>): List<A> =
-
-    SOLUTION_HERE()
+    when (xs) {
+        is Nil -> throw IllegalStateException("tail of empty list")
+        is Cons -> xs.tail
+    }
 // end::init[]
 
 //TODO: Enable tests by removing `!` prefix

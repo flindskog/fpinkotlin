@@ -1,15 +1,16 @@
 package chapter3.exercises.ex8
 
+import chapter3.Cons
 import chapter3.List
 import chapter3.Nil
+import chapter3.exercises.ex7.foldRight
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.WordSpec
 import utils.SOLUTION_HERE
 
 // tag::init[]
 fun <A> length(xs: List<A>): Int =
-
-    SOLUTION_HERE()
+    foldRight(xs, 0) { _, acc -> acc + 1 }
 // end::init[]
 
 //TODO: Enable tests by removing `!` prefix

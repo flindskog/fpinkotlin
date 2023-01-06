@@ -1,14 +1,15 @@
 package chapter3.exercises.ex11
 
+import chapter3.Cons
 import chapter3.List
+import chapter3.foldLeft
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.WordSpec
 import utils.SOLUTION_HERE
 
 // tag::init[]
 fun <A> reverse(xs: List<A>): List<A> =
-
-    SOLUTION_HERE()
+    foldLeft(xs, List.empty()) { acc, x -> Cons(x, acc) }
 // end::init[]
 
 //TODO: Enable tests by removing `!` prefix

@@ -1,5 +1,6 @@
 package chapter3.exercises.ex3
 
+import chapter3.Cons
 import chapter3.List
 import chapter3.Nil
 import io.kotlintest.shouldBe
@@ -9,8 +10,11 @@ import utils.SOLUTION_HERE
 
 // tag::init[]
 fun <A> drop(l: List<A>, n: Int): List<A> =
-
-    SOLUTION_HERE()
+    if (n == 0) l
+    else when (l) {
+        is Nil -> l
+        is Cons -> drop(l.tail, n - 1)
+    }
 // end::init[]
 
 //TODO: Enable tests by removing `!` prefix

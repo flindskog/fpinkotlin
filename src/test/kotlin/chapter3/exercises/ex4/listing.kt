@@ -1,5 +1,6 @@
 package chapter3.exercises.ex4
 
+import chapter3.Cons
 import chapter3.List
 import chapter3.Nil
 import io.kotlintest.shouldBe
@@ -8,8 +9,12 @@ import utils.SOLUTION_HERE
 
 // tag::init[]
 fun <A> dropWhile(l: List<A>, f: (A) -> Boolean): List<A> =
-
-    SOLUTION_HERE()
+    when (l) {
+        is Nil -> l
+        is Cons ->
+            if (f(l.head)) dropWhile(l.tail, f)
+            else l
+    }
 // end::init[]
 
 //TODO: Enable tests by removing `!` prefix
